@@ -56,4 +56,4 @@ def display_weather(self, weather_data):
     lat = float(input("请输入纬度: "))
     lon = float(input("请输入经度: "))
     weather_data = app.get_weather_by_coordinates(lat, lon)
-    app.display_weather(weather_data)
+    app.display_weather(weather_data)#完成分支
