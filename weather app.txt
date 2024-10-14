@@ -17,3 +17,30 @@ class WeatherApp:
             return response.json()
         else:
             return None
+def get_weather_by_coordinates(self, lat, lon):
+        """根据经纬度获取天气"""
+        params = {
+            'lat': lat,
+            'lon': lon,
+            'appid': self.api_key,
+            'units': 'metric'  # 摄氏度
+        }
+        response = requests.get(self.base_url, params=params)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
+
+    def display_weather(self, weather_data):
+        """展示天气信息"""
+        if weather_data:
+            city = weather_data['name']
+            temperature = weather_data['main']['temp']
+            humidity = weather_data['main']['humidity']
+            wind_speed = weather_data['wind']['speed']
+            print(f"城市: {city}")
+            print(f"温度: {temperature}°C")
+            print(f"湿度: {humidity}%")
+            print(f"风速: {wind_speed} m/s")
+        else:
+            print("无法获取天气信息，请检查输入。")
