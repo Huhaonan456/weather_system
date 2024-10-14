@@ -31,7 +31,7 @@ def get_weather_by_coordinates(self, lat, lon):
         else:
             return None
 
-    def display_weather(self, weather_data):
+def display_weather(self, weather_data):
         """展示天气信息"""
         if weather_data:
             city = weather_data['name']
@@ -44,3 +44,16 @@ def get_weather_by_coordinates(self, lat, lon):
             print(f"风速: {wind_speed} m/s")
         else:
             print("无法获取天气信息，请检查输入。")
+    if __name__ == "__main__":
+    app = WeatherApp()
+    
+    # 用户通过城市名查询天气
+    city_name = input("请输入城市名: ")
+    weather_data = app.get_weather_by_city(city_name)
+    app.display_weather(weather_data)
+    
+    # 用户通过经纬度查询天气
+    lat = float(input("请输入纬度: "))
+    lon = float(input("请输入经度: "))
+    weather_data = app.get_weather_by_coordinates(lat, lon)
+    app.display_weather(weather_data)
