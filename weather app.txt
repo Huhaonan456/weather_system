@@ -1,1 +1,19 @@
-123123123123123
+import requests
+
+class WeatherApp:
+    def __init__(self):
+        self.api_key = 'YOUR_API_KEY'  # 替换为你的API密钥
+        self.base_url = 'http://api.openweathermap.org/data/2.5/weather'
+        
+    def get_weather_by_city(self, city_name):
+        """根据城市名称获取天气"""
+        params = {
+            'q': city_name,
+            'appid': self.api_key,
+            'units': 'metric'  # 摄氏度
+        }
+        response = requests.get(self.base_url, params=params)
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return None
